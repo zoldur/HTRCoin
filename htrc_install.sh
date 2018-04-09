@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.HighTemperature'
 COIN_DAEMON='hightemperatured'
 COIN_CLI='hightemperatured'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/htrcoin/htrcoin/files/1864370/linux64x_hightemperatured.zip'
+COIN_TGZ='https://github.com/htrcoin/htrcoin/files/1890424/HTRC_ubuntu16.04_1_0_1_0.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='HighTemperature'
 COIN_PORT=11368
@@ -26,9 +26,10 @@ function download_node() {
   compile_error
   unzip $COIN_ZIP >/dev/null 2>&1
   compile_error
+  cd HTRC_ubuntu16.04_1_0_1_0 >/dev/null 2>&1
   chmod +x $COIN_DAEMON
-  cp $COIN_DAEMON /usr/local/bin
-  cd - >/dev/null 2>&1
+  cp $COIN_DAEMON $COIN_PATH
+  cd ~ >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
 }
