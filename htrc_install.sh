@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.HighTemperature'
 COIN_DAEMON='hightemperatured'
 COIN_CLI='hightemperatured'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/htrcoin/htrcoin/files/1896598/hightemperatured.zip'
+COIN_TGZ='https://github.com/htrcoin/htrcoin/releases/download/v1020/HTRC_Headless_Linux_v1020.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='HighTemperature'
 COIN_PORT=11368
@@ -26,6 +26,7 @@ function download_node() {
   compile_error
   unzip $COIN_ZIP >/dev/null 2>&1
   compile_error
+  cd linux
   chmod +x $COIN_DAEMON
   cp $COIN_DAEMON $COIN_PATH
   cd ~ >/dev/null 2>&1
@@ -123,6 +124,8 @@ maxconnections=256
 masternode=1
 masternodeaddr=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
+addnode=192.210.172.250
+addnode=144.202.104.165
 EOF
 }
 
